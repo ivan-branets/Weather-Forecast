@@ -1,0 +1,31 @@
+﻿h1 {
+    color: darkorange;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+ul li {
+    list-style: none;
+    width: 200px;
+    clear: both;
+}
+
+    ul span:first-child {
+        color: gray;
+        float: left;
+    }
+
+    ul span:last-child {
+        display: block;
+        float: right;
+        width: 50px;
+        color: green;
+        text-align: right;
+    }

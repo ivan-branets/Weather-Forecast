@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Weather forecast generator";
+}
+
+@section scripts
+{
+    <script>
+        $(function () {
+          
+            var hub = $.connection.forecastHub;
+            
+            var model = {
+                forecasts: ko.observableArray()
+            };
+
+            $.connection.hub.start().done(function () {
+                var worker = new Worker("@Url.Content("~/Scripts/forecastGeneratorWorker.js")");
+                
+                worker.onmessage = function (event) {
+                    updateObservable(model.forecasts, event.data);
+                    hub.server.giveForecast(event.data);
+                };
+            });
+            
+            ko.applyBindings(model);
+        });
+    </script>
+}
+
+<h1>Weather forecast generator</h1>
+
+<ul data-bind="foreach: forecasts">
+    <li>
+        <span data-bind="text: getDateStr(date)"></span>
+        <span data-bind="text: '+' + temperature() + '&deg;'"></span>
+    </li> 
+</ul>
