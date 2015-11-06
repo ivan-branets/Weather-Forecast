@@ -30,7 +30,7 @@ namespace WeatherForecast
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
-                        "~/Scripts/scripts.js"));
+                        "~/Scripts/app/scripts.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 

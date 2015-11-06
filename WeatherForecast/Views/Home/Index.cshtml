@@ -15,7 +15,7 @@
             };
   
             hub.client.display = function (array) {
-                updateObservable(model.forecasts, array);
+                model.forecasts(array);
             };
             
             ko.applyBindings(model);
@@ -29,6 +29,6 @@
 <ul data-bind="foreach: forecasts">
     <li>
         <span data-bind="text: getDateStr(date)"></span>
-        <span data-bind="text: '+' + temperature() + '&deg;'"></span>
+        <span data-bind="text: '+' + temperature + '&deg;'"></span>
     </li> 
 </ul>
